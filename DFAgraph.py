@@ -28,15 +28,16 @@ class DFAGraphPlot:
 
         G.add_node("start", "start", shape="ellipse", color = "white")
 
-        count = 0
+        first = True
         name = ""
         for n in Nodes:
             if n["goal"]:
                 G.add_node(str(n["name"]), "q"+str(n["name"]), shape="ellipse", color = "yellow")
             else:
                 G.add_node(str(n["name"]), "q"+str(n["name"]), shape="ellipse")
-            if count == 0:
-                name = str(n["name"])            
+            if first:
+                name = str(n["name"]) 
+            first = False           
         
         G.add_edge("start", name)
 
