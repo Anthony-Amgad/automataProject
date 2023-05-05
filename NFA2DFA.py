@@ -167,13 +167,12 @@ class N2D(QtWidgets.QMainWindow):
             self.reGraph()
             self.delEdCom.setCurrentIndex(-1)
             
-    """def checkBoxClick(self):
+    def checkBoxClick(self):
         if self.checkBox.isChecked():
-            self.nodeHuerTxt.setDisabled(True)
-            self.nodeHuerTxt.setText("0")
+            self.Nodes[0] = {"name":0, "goal":True}
         else:
-            self.nodeHuerTxt.setDisabled(False)
-            self.nodeHuerTxt.setText("")"""
+            self.Nodes[0] = {"name":0, "goal":False}
+        self.reGraph()
 
     def getClosure(self, node):
         nodes = {node}
@@ -212,32 +211,15 @@ class N2D(QtWidgets.QMainWindow):
                              DFAedges.append({"from":no, "to":nod, "cost":edge["cost"]})
 
         for no in DFAnodes:
-            finalNodes.append({"name":no ,"goal":False})
+            goal = False
+            for n in no:
+                gN = list(filter(lambda nod: (nod['name'] == n) and (nod['goal'] == True), self.Nodes))
+                if len(gN) > 0:
+                    goal = True
+            finalNodes.append({"name":no ,"goal":goal})
 
-        print(DFAnodes)
-        self.DFAdraw( finalNodes, DFAedges)
-
-    """def onClickSearch(self):
-        if (self.startNodeCom.currentIndex() != -1) and (self.searchAlgoCom.currentIndex() != -1):
-            temheur = next(x for x in self.Nodes if x["name"] == self.startNodeCom.currentText())["heur"]
-            self.fringe.append(self.startNodeCom.currentText() + ":0:" + str(temheur) + ":1")
-            self.treeNodes.append({"name" : self.startNodeCom.currentText(), "parent" : None, "Gs" : 0, "Hs" : temheur, "goal":next(x for x in self.Nodes if x["name"] == self.startNodeCom.currentText())["goal"], "hi":1})
-            self.choice = self.searchAlgoCom.currentIndex()
-            self.curDLS = 1
-            self.temtree = []
-            self.inSearch(True)
-            self.reTree(False)
-                
-        else:
-            msg = QtWidgets.QMessageBox()
-            msg.setWindowIcon(QtGui.QIcon('res/error.png'))
-            msg.setIcon(QtWidgets.QMessageBox.Critical)
-            msg.setText("Error")
-            msg.setInformativeText('Make sure you chose a starting node and an algorithm')
-            msg.setWindowTitle("Error")
-            msg.exec_()"""
-
-                       
+        #print(DFAnodes)
+        self.DFAdraw( finalNodes, DFAedges)                   
 
     
     def __init__(self):
@@ -271,16 +253,9 @@ class N2D(QtWidgets.QMainWindow):
         self.toEdAddCom.lineEdit().setPlaceholderText("To")
         self.delEdCom.lineEdit().setPlaceholderText("Pick an Edge to Delete")
         self.delNodeCom.lineEdit().setPlaceholderText("Pick a Node to Delete")
-        #self.startNodeCom.lineEdit().setPlaceholderText("Pick a Starting Node")
-        #self.searchAlgoCom.lineEdit().setPlaceholderText("Pick a Searching Algorithm")
-        self.searchBtn.setDisabled(False)
-
-        """self.searchAlgoCom.addItem("Breadth First Search")
-        self.searchAlgoCom.addItem("Depth First Search")
-        self.searchAlgoCom.addItem("Iterative Deepening Search")
-        self.searchAlgoCom.addItem("Uniform Cost Search")
-        self.searchAlgoCom.addItem("Greedy Search")
-        self.searchAlgoCom.addItem("A* Search")"""
+        
+        self.fromEdAddCom.addItem("0")
+        self.toEdAddCom.addItem("0")
 
         self.adAccNodeBtn.clicked.connect(lambda: self.addNode(True))
         self.adTransNodeBtn.clicked.connect(lambda: self.addNode(False))
@@ -288,13 +263,14 @@ class N2D(QtWidgets.QMainWindow):
         self.delNodeBtn.clicked.connect(self.delNode)
         self.delEdgeBtn.clicked.connect(self.delEdge)
         self.searchBtn.clicked.connect(self.onClickConv)
+        self.checkBox.clicked.connect(self.checkBoxClick)
 
 
         self.show()
 
         ##This is for finding functions using auto complete as they cannot be found with the item loaded in the .ui
-        #self.x = QtWidgets.QComboBox(self.centralwidget)
-        #self.x.setCurrentIndex(-1)
+        #self.x = QtWidgets.QCheckBox(self.centralwidget)
+        #self.x.clicked.connect
 
 
 if __name__ == "__main__":

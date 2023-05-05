@@ -26,11 +26,19 @@ class DFAGraphPlot:
                 }
         """)
 
+        G.add_node("start", "start", shape="ellipse", color = "white")
+
+        count = 0
+        name = ""
         for n in Nodes:
             if n["goal"]:
                 G.add_node(str(n["name"]), "q"+str(n["name"]), shape="ellipse", color = "yellow")
             else:
                 G.add_node(str(n["name"]), "q"+str(n["name"]), shape="ellipse")
+            if count == 0:
+                name = str(n["name"])            
+        
+        G.add_edge("start", name)
 
         for e in Edges:
             G.add_edge(str(e["from"]), str(e["to"]), label = e["cost"])
