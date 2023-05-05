@@ -140,35 +140,29 @@ class N2D(QtWidgets.QMainWindow):
 
     def onClickConv(self):
         DFAnodes = []
-        finalNodes = []
         DFAedges = []
 
         for n in self.Nodes:
             clos = self.getClosure(n["name"])
-            try:
-                if DFAnodes.index(clos) != None:
-                    pass
-            except:
-                DFAnodes.append(clos)
-
+            Nos = list(filter(lambda nod: (nod['name'] == clos), DFAnodes))
+            if len(Nos) == 0:
+                goal = False
+                for n in clos:
+                    gN = list(filter(lambda nod: (nod['name'] == n) and (nod['goal'] == True), self.Nodes))
+                    if len(gN) > 0:
+                        goal = True
+                DFAnodes.append({"name":clos ,"goal":goal})
+        
         for no in DFAnodes:
-            for n in no:
+            for n in no["name"]:
                 nE = list(filter(lambda edge: (edge['from'] == n) and (edge['cost'] != "ε"), self.Edges))
                 for edge in nE:
                      for nod in DFAnodes:
-                         if {edge["to"]}.issubset(nod):
-                             DFAedges.append({"from":no, "to":nod, "cost":edge["cost"]})
-
-        for no in DFAnodes:
-            goal = False
-            for n in no:
-                gN = list(filter(lambda nod: (nod['name'] == n) and (nod['goal'] == True), self.Nodes))
-                if len(gN) > 0:
-                    goal = True
-            finalNodes.append({"name":no ,"goal":goal})
+                         if {edge["to"]}.issubset(nod["name"]):
+                             DFAedges.append({"from":no["name"], "to":nod["name"], "cost":edge["cost"]})
 
         #print(DFAnodes)
-        self.DFAdraw( finalNodes, DFAedges)                   
+        self.DFAdraw(DFAnodes, DFAedges)                   
 
     
     def __init__(self):
