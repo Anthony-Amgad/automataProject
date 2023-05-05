@@ -28,57 +28,6 @@ class N2D(QtWidgets.QMainWindow):
         self.toEdAddCom.addItem(str(self.count))
         self.delNodeCom.addItem(str(self.count))
         self.reGraph()
-        """try:
-            if next((x for x in self.Nodes if x["name"] == self.nodeNameTxt.text()), None)  != None:
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowIcon(QtGui.QIcon('res/error.png'))
-                msg.setIcon(QtWidgets.QMessageBox.Critical)
-                msg.setText("Error")
-                msg.setInformativeText('Please Enter Unique Node Name')
-                msg.setWindowTitle("Error")
-                msg.exec_()
-            elif self.nodeNameTxt.text() == "" or self.nodeNameTxt.text()[0].isdigit():
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowIcon(QtGui.QIcon('res/error.png'))
-                msg.setIcon(QtWidgets.QMessageBox.Critical)
-                msg.setText("Error")
-                msg.setInformativeText('Please Make sure the Node Name is entered with a character at the start')
-                msg.setWindowTitle("Error")
-                msg.exec_()
-            else:
-                nH = self.nodeHuerTxt.text()
-                if nH == "":
-                    nH = 0.0
-                else:
-                    nH = float(nH)
-                if nH < 0:
-                    raise Exception("No Negative Numbers")
-                nG = self.checkBox.isChecked()
-                nN = self.nodeNameTxt.text().strip()
-                self.Nodes.append({"name":nN, "heur":nH, "goal":nG})
-                self.fromEdAddCom.addItem(nN)
-                self.toEdAddCom.addItem(nN)
-                self.delNodeCom.addItem(nN)
-                self.nodeNameTxt.setText("")
-                self.nodeHuerTxt.setDisabled(False)
-                self.nodeHuerTxt.setText("")
-                self.checkBox.setCheckState(False)
-                if not nG:
-                    self.startNodeCom.addItem(nN)
-                self.reGraph()
-                if len(self.Nodes) >= 2:
-                    ngg = list(filter(lambda node: node['goal'], self.Nodes))
-                    if (len(ngg) != len(self.Nodes)) and (len(ngg) >= 1):
-                        self.searchBtn.setDisabled(False)
-
-        except:
-            msg = QtWidgets.QMessageBox()
-            msg.setWindowIcon(QtGui.QIcon('res/error.png'))
-            msg.setIcon(QtWidgets.QMessageBox.Critical)
-            msg.setText("Error")
-            msg.setInformativeText('Please check that Node Heuristic is valid')
-            msg.setWindowTitle("Error")
-            msg.exec_()"""
 
     
     def addEdge(self):
