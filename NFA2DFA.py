@@ -18,7 +18,7 @@ class N2D(QtWidgets.QMainWindow):
         self.graphBrowser.load(QtCore.QUrl.fromLocalFile(os.path.abspath("res/NFAgraph.html")))
 
     def DFAdraw(self, nodes, edges):
-        self.AdjLi = DFAGraphPlot.plotDir(nodes, edges)
+        DFAGraphPlot.plotDir(nodes, edges)
         self.treeBrowser.load(QtCore.QUrl.fromLocalFile(os.path.abspath("res/DFAgraph.html")))
     
     def addNode(self, bool):
@@ -139,29 +139,61 @@ class N2D(QtWidgets.QMainWindow):
         return nodes
 
     def onClickConv(self):
-        DFAnodes = []
-        DFAedges = []
+        NFAnodes = []
+        NFAedges = []
 
         for n in self.Nodes:
             clos = self.getClosure(n["name"])
-            Nos = list(filter(lambda nod: (nod['name'] == clos), DFAnodes))
+            Nos = list(filter(lambda nod: (nod['name'] == clos), NFAnodes))
             if len(Nos) == 0:
                 goal = False
                 for n in clos:
                     gN = list(filter(lambda nod: (nod['name'] == n) and (nod['goal'] == True), self.Nodes))
                     if len(gN) > 0:
                         goal = True
-                DFAnodes.append({"name":clos ,"goal":goal})
+                NFAnodes.append({"name":clos ,"goal":goal})
         
-        for no in DFAnodes:
+        for no in NFAnodes:
             for n in no["name"]:
                 nE = list(filter(lambda edge: (edge['from'] == n) and (edge['cost'] != "ε"), self.Edges))
                 for edge in nE:
-                     for nod in DFAnodes:
+                     for nod in NFAnodes:
                          if {edge["to"]}.issubset(nod["name"]):
-                             DFAedges.append({"from":no["name"], "to":nod["name"], "cost":edge["cost"]})
+                             NFAedges.append({"from":no["name"], "to":nod["name"], "cost":edge["cost"]})
 
-        #print(DFAnodes)
+        DFAnodes = [NFAnodes[0]]
+        DFAedges = []
+
+        for node in DFAnodes:
+            nN = []
+            nE = []
+            for n in node["name"]:
+                nE += list(filter(lambda edge: (edge['from'] == n) and (edge['cost'] != "ε"), self.Edges))
+            print(nE)
+            for edge in nE:
+                fN = list(filter(lambda no: (no['cost'] == edge['cost']), nN))
+                if len(fN) == 0:
+                    nN.append({'name':{edge['to']}, 'cost':edge['cost']})
+                else:
+                    nN[nN.index(fN[0])]['name'] = nN[nN.index(fN[0])]['name'].union({edge['to']})
+            
+            nfN = list(filter(lambda no: (no['name'] == node['name']), NFAnodes))
+            if len(nfN) > 0:
+                nfE = list(filter(lambda edge: (edge['from'] == nfN[0]['name']), NFAedges))
+                for edge in nfE:
+                    fN = list(filter(lambda no: (no['cost'] == edge['cost']), nN))
+                    if len(fN) == 0:
+                        nN.append({'name':edge['to'], 'cost':edge['cost']})
+                    else:
+                        nN[nN.index(fN[0])]['name'] = nN[nN.index(fN[0])]['name'].union(edge['to'])
+            
+            for n in nN:
+                dfN = list(filter(lambda no: (no['name'] == n['name']), DFAnodes))
+                if len(dfN) == 0:
+                    DFAnodes.append({'name':n['name'], 'goal':False})
+                DFAedges.append({"from":node['name'], "to":n["name"], "cost":n["cost"]})
+        
+        #print(NFAnodes)
         self.DFAdraw(DFAnodes, DFAedges)                   
 
     

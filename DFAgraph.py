@@ -7,6 +7,9 @@ class DFAGraphPlot:
         G = Network(height='100%', width='100%', directed=bool)
 
         G.set_options("""var options = {
+                "physics":{
+                "enabled": true
+                },
                   "edges": {
                     "smooth": {
                         "enabled" : true
@@ -25,7 +28,8 @@ class DFAGraphPlot:
                   }
                 }
         """)
-
+        
+        
         G.add_node("start", "start", shape="ellipse", color = "white")
 
         first = True
@@ -43,7 +47,7 @@ class DFAGraphPlot:
 
         for e in Edges:
             G.add_edge(str(e["from"]), str(e["to"]), label = e["cost"])
-
+        #G.toggle_physics(status=True)
         G.save_graph("res/DFAgraph.html")
         return G.get_adj_list()
 

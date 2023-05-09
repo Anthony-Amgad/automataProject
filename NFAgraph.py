@@ -7,6 +7,9 @@ class NFAGraphPlot:
         G = Network(height='100%', width='100%', directed=bool)
 
         G.set_options("""var options = {
+                "physics":{
+                "enabled": true
+                },
                   "edges": {
                     "smooth": {
                         "enabled" : true
@@ -37,7 +40,7 @@ class NFAGraphPlot:
 
         for e in Edges:
             G.add_edge(e["from"], e["to"], label = e["cost"])
-
+        #G.toggle_physics(status=True)
         G.save_graph("res/NFAgraph.html")
         return G.get_adj_list()
 
