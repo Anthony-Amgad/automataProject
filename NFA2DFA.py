@@ -138,30 +138,31 @@ class N2D(QtWidgets.QMainWindow):
             Nos = list(filter(lambda nod: (nod['name'] == clos), NFAnodes))
             if len(Nos) == 0:
                 goal = False
-                for n in clos:
-                    gN = list(filter(lambda nod: (nod['name'] == n) and (nod['goal'] == True), self.Nodes))
+                for no in clos:
+                    gN = list(filter(lambda nod: (nod['name'] == no) and (nod['goal'] == True), self.Nodes))
                     if len(gN) > 0:
                         goal = True
-                NFAnodes.append({"name":clos ,"goal":goal})
+                NFAnodes.append({"name":clos ,"goal":goal, "main":n['name']})
         
         for no in NFAnodes:
             for n in no["name"]:
                 nE = list(filter(lambda edge: (edge['from'] == n) and (edge['cost'] != "ε"), self.Edges))
                 for edge in nE:
                      for nod in NFAnodes:
-                         if {edge["to"]}.issubset(nod["name"]):
+                         if edge["to"] == nod["main"]:
                              NFAedges.append({"from":no["name"], "to":nod["name"], "cost":edge["cost"]})
 
         DFAnodes = [NFAnodes[0]]
         DFAedges = []
-
+        
         for node in DFAnodes:
             nN = []
             nE = []
             for n in node["name"]:
                 nE += list(filter(lambda edge: (edge['from'] == n) and (edge['cost'] != "ε"), self.Edges))
-            print(nE)
+            #print(nE)
             for edge in nE:
+                print(str(node['name'])+"$"+str(edge['to'])+"$"+str(edge['cost']))
                 fN = list(filter(lambda no: (no['cost'] == edge['cost']), nN))
                 if len(fN) == 0:
                     nN.append({'name':{edge['to']}, 'cost':edge['cost']})
@@ -172,6 +173,7 @@ class N2D(QtWidgets.QMainWindow):
             if len(nfN) > 0:
                 nfE = list(filter(lambda edge: (edge['from'] == nfN[0]['name']), NFAedges))
                 for edge in nfE:
+                    print(str(node['name'])+"$"+str(edge['to'])+"$"+str(edge['cost']))
                     fN = list(filter(lambda no: (no['cost'] == edge['cost']), nN))
                     if len(fN) == 0:
                         nN.append({'name':edge['to'], 'cost':edge['cost']})

@@ -50,8 +50,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"color": "white", "id": "start", "label": "start", "shape": "ellipse"}, {"id": 0, "label": "q0", "shape": "ellipse"}]);
-        edges = new vis.DataSet([{"arrows": "to", "from": "start", "to": 0}]);
+        nodes = new vis.DataSet([{"color": "white", "id": "start", "label": "start", "shape": "ellipse"}, {"id": 0, "label": "q0", "shape": "ellipse"}, {"id": 1, "label": "q1", "shape": "ellipse"}, {"color": "yellow", "id": 2, "label": "q2", "shape": "ellipse"}, {"color": "yellow", "id": 3, "label": "q3", "shape": "ellipse"}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "start", "to": 0}, {"arrows": "to", "from": 0, "label": "1", "to": 1}, {"arrows": "to", "from": 1, "label": "\u03b5", "to": 0}, {"arrows": "to", "from": 1, "label": "1", "to": 1}, {"arrows": "to", "from": 1, "label": "0,1", "to": 2}, {"arrows": "to", "from": 0, "label": "\u03b5", "to": 2}, {"arrows": "to", "from": 0, "label": "0", "to": 3}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
