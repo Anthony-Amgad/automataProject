@@ -38,9 +38,17 @@ class NFAGraphPlot:
 
         G.add_edge("start", 0)
 
+        finalE = []
         for e in Edges:
+            fE = list(filter(lambda edge: (edge['from'] == e['from']) and (edge['to'] == e['to']), finalE))
+            if len(fE) > 0:
+                 finalE[finalE.index(fE[0])]['cost'] = finalE[finalE.index(fE[0])]['cost'] + "," + e['cost']
+            else:
+                finalE.append(e.copy())
+
+        for e in finalE:
             G.add_edge(e["from"], e["to"], label = e["cost"])
-        #G.toggle_physics(status=True)
+
         G.save_graph("res/NFAgraph.html")
         return G.get_adj_list()
 

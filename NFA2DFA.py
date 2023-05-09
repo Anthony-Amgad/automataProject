@@ -190,7 +190,12 @@ class N2D(QtWidgets.QMainWindow):
             for n in nN:
                 dfN = list(filter(lambda no: (no['name'] == n['name']), DFAnodes))
                 if len(dfN) == 0:
-                    DFAnodes.append({'name':n['name'], 'goal':False})
+                    goal = False
+                    for nn in n['name']:
+                        gN = list(filter(lambda nod: (nod['name'] == nn) and (nod['goal'] == True), self.Nodes))
+                        if len(gN) > 0:
+                            goal = True
+                    DFAnodes.append({'name':n['name'], 'goal':goal})
                 DFAedges.append({"from":node['name'], "to":n["name"], "cost":n["cost"]})
         
         #print(NFAnodes)

@@ -33,21 +33,26 @@ class DFAGraphPlot:
         G.add_node("start", "start", shape="ellipse", color = "white")
 
         first = True
-        name = ""
         for n in Nodes:
             if n["goal"]:
                 G.add_node(str(n["name"]), "q"+str(n["name"]), shape="ellipse", color = "yellow")
             else:
                 G.add_node(str(n["name"]), "q"+str(n["name"]), shape="ellipse")
             if first:
-                name = str(n["name"]) 
+                G.add_edge("start", str(n["name"])) 
             first = False           
         
-        G.add_edge("start", name)
-
+        finalE = []
         for e in Edges:
+            fE = list(filter(lambda edge: (edge['from'] == e['from']) and (edge['to'] == e['to']), finalE))
+            if len(fE) > 0:
+                 finalE[finalE.index(fE[0])]['cost'] = finalE[finalE.index(fE[0])]['cost'] + "," + e['cost']
+            else:
+                finalE.append(e.copy())
+
+        for e in finalE:
             G.add_edge(str(e["from"]), str(e["to"]), label = e["cost"])
-        #G.toggle_physics(status=True)
+
         G.save_graph("res/DFAgraph.html")
         return G.get_adj_list()
 
