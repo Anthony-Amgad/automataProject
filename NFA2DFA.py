@@ -31,34 +31,25 @@ class N2D(QtWidgets.QMainWindow):
 
     
     def addEdge(self):
-        try:
-            if (self.fromEdAddCom.currentIndex() == -1) or (self.toEdAddCom.currentIndex() == -1):
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowIcon(QtGui.QIcon('res/error.png'))
-                msg.setIcon(QtWidgets.QMessageBox.Critical)
-                msg.setText("Error")
-                msg.setInformativeText('Please Make sure both a from and to Node are selected')
-                msg.setWindowTitle("Error")
-                msg.exec_()
-            else:
-                eC = self.edPathCTxt.text()
-                if eC == "":
-                    eC = "ε"
-                self.Edges.append({"from":int(self.fromEdAddCom.currentText()),"to":int(self.toEdAddCom.currentText()),"cost":eC})
-                self.delEdCom.addItem(self.fromEdAddCom.currentText() + " > " + self.toEdAddCom.currentText() + " : " + str(eC))
-                self.fromEdAddCom.setCurrentIndex(-1)
-                self.toEdAddCom.setCurrentIndex(-1)
-                self.edPathCTxt.setText("")
-                self.reGraph()
-
-        except:
+        if (self.fromEdAddCom.currentIndex() == -1) or (self.toEdAddCom.currentIndex() == -1):
             msg = QtWidgets.QMessageBox()
             msg.setWindowIcon(QtGui.QIcon('res/error.png'))
             msg.setIcon(QtWidgets.QMessageBox.Critical)
             msg.setText("Error")
-            msg.setInformativeText('Please check that Edge Path Cost is valid')
+            msg.setInformativeText('Please Make sure both a from and to Node are selected')
             msg.setWindowTitle("Error")
             msg.exec_()
+        else:
+            eC = self.edPathCTxt.text()
+            if eC == "" or eC == " ":
+                eC = "ε"
+            self.Edges.append({"from":int(self.fromEdAddCom.currentText()),"to":int(self.toEdAddCom.currentText()),"cost":eC})
+            self.delEdCom.addItem(self.fromEdAddCom.currentText() + " > " + self.toEdAddCom.currentText() + " : " + str(eC))
+            self.fromEdAddCom.setCurrentIndex(-1)
+            self.toEdAddCom.setCurrentIndex(-1)
+            self.edPathCTxt.setText("")
+            self.reGraph()
+
 
     def delNode(self):
         if self.delNodeCom.currentIndex() != -1:
@@ -226,8 +217,6 @@ class N2D(QtWidgets.QMainWindow):
         self.treeBrowser.setGeometry(QtCore.QRect(560, 220, 551, 601))
         self.treeBrowser.setObjectName("treeBrowser")
         #self.reTree(False)
-
-         
 
         self.fromEdAddCom.lineEdit().setPlaceholderText("From")
         self.toEdAddCom.lineEdit().setPlaceholderText("To")

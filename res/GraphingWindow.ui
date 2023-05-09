@@ -47,6 +47,12 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>1</number>
+    </property>
     <property name="placeholderText">
      <string>Transition Token (leave empty for ε)</string>
     </property>
