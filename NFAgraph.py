@@ -8,7 +8,8 @@ class NFAGraphPlot:
 
         G.set_options("""var options = {
                 "physics":{
-                "enabled": true
+                "enabled": true,
+                "repulsion": true
                 },
                   "edges": {
                     "smooth": {

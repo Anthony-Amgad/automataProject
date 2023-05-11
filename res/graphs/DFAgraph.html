@@ -50,13 +50,13 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"color": "white", "id": "start", "label": "start", "shape": "ellipse"}, {"id": "{0}", "label": "q{0}", "shape": "ellipse"}]);
-        edges = new vis.DataSet([{"arrows": "to", "from": "start", "to": "{0}"}]);
+        nodes = new vis.DataSet([{"color": "white", "id": "start", "label": "start", "shape": "ellipse"}, {"color": "yellow", "id": "{0, 1, 2}", "label": "q{0, 1, 2}", "shape": "ellipse"}, {"color": "yellow", "id": "{1, 2}", "label": "q{1, 2}", "shape": "ellipse"}, {"color": "yellow", "id": "{2}", "label": "q{2}", "shape": "ellipse"}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "start", "to": "{0, 1, 2}"}, {"arrows": "to", "from": "{0, 1, 2}", "label": "1", "to": "{0, 1, 2}"}, {"arrows": "to", "from": "{0, 1, 2}", "label": "0", "to": "{1, 2}"}, {"arrows": "to", "from": "{1, 2}", "label": "1", "to": "{1, 2}"}, {"arrows": "to", "from": "{1, 2}", "label": "0", "to": "{2}"}, {"arrows": "to", "from": "{2}", "label": "0,1", "to": "{2}"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
 
-        var options = {"physics": {"enabled": true}, "edges": {"smooth": {"enabled": true}, "color": {"inherit": false}}, "interaction": {"hover": true, "keyboard": {"enabled": true}, "multiselect": true, "navigationButtons": true}};
+        var options = {"physics": {"enabled": true, "repulsion": true}, "edges": {"smooth": {"enabled": true}, "color": {"inherit": false}}, "interaction": {"hover": true, "keyboard": {"enabled": true}, "multiselect": true, "navigationButtons": true}};
         
         
 

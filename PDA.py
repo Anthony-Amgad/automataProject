@@ -11,7 +11,6 @@ class PDA:
         self.startSymbol = startSymbol
         self.terminals = terminals
         self.rules = rules
-        #self.states, self.transitions = self.__getStatesTransitions()
 
     def getStatesTransitions(self):
         
@@ -65,14 +64,18 @@ class PDA:
 
         G.set_options("""var options = {
                 "physics":{
-                "enabled": true
+                    "enabled": true,
+                    "repulsion": true
                 },
-                  "edges": {
+                "edges": {
                     "smooth": {
                         "enabled" : true
                     },
                     "color": {
                         "inherit" : false
+                    },
+                    "font": {
+                        "size": 18        
                     }
                   },
                   "interaction": {
@@ -91,6 +94,25 @@ class PDA:
         
         for trans in self.transitions:
             G.add_edge(trans.currState, trans.nextState, label=str(trans))
+        
+        G.nodes[0]["physics"] = False
+        G.nodes[0]["x"] = 0
+        G.nodes[0]["y"] = 0
+        
+        G.nodes[1]["physics"] = False
+        G.nodes[1]["x"] = 200
+        G.nodes[1]["y"] = 0
+        
+        G.nodes[2]["physics"] = False
+        G.nodes[2]["x"] = 400
+        G.nodes[2]["y"] = 0
+
+        G.nodes[3]["borderWidth"] = 5
+        G.nodes[3]["title"] = "Acceptance State"
+        G.nodes[3]["physics"] = False
+        G.nodes[3]["x"] = 600
+        G.nodes[3]["y"] = 0
+
 
         G.save_graph("res/graphs/PDAgraph.html")
 
@@ -131,6 +153,10 @@ class Transition:
     
     def __str__(self):
         string = self.inputSymbol + ", " + self.popSymbol + " → " + self.pushSymbol 
+        return string
+    
+    def toString(self):
+        string = ' 𝛿(' + self.currState + ', ' + self.inputSymbol + ', ' + self.popSymbol + ') = { ( ' + self.nextState + ', ' + self.pushSymbol + ' ) }'
         return string
 
 
