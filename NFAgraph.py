@@ -49,7 +49,7 @@ class NFAGraphPlot:
         for e in finalE:
             G.add_edge(e["from"], e["to"], label = e["cost"])
 
-        G.save_graph("res/NFAgraph.html")
+        G.save_graph("res/graphs/NFAgraph.html")
         return G.get_adj_list()
 
     def plotDir(Nodes,Edges):

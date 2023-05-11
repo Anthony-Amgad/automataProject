@@ -12,7 +12,7 @@ class MUi(QtWidgets.QMainWindow):
         
     def __init__(self):
         super(MUi,self).__init__()
-        uic.loadUi('res/MainWindow.ui',self)
+        uic.loadUi('res/ui/MainWindow.ui',self)
 
         self.setFixedSize(804, 156)
 

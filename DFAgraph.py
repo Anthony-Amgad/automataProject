@@ -53,7 +53,7 @@ class DFAGraphPlot:
         for e in finalE:
             G.add_edge(str(e["from"]), str(e["to"]), label = e["cost"])
 
-        G.save_graph("res/DFAgraph.html")
+        G.save_graph("res/graphs/DFAgraph.html")
         return G.get_adj_list()
 
     def plotDir(Nodes,Edges):

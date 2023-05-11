@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "q0", "label": "q0", "shape": "dot"}, {"id": "q1", "label": "q1", "shape": "dot"}, {"id": "q2", "label": "q2", "shape": "dot"}, {"id": "q3", "label": "q3", "shape": "dot"}, {"id": "q4", "label": "q4", "shape": "dot"}, {"id": "q5", "label": "q5", "shape": "dot"}, {"id": "q6", "label": "q6", "shape": "dot"}, {"id": "q7", "label": "q7", "shape": "dot"}, {"id": "q8", "label": "q8", "shape": "dot"}, {"id": "q9", "label": "q9", "shape": "dot"}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "q0", "label": "\u03b5, \u03b5 \u2192 $", "to": "q1"}, {"arrows": "to", "from": "q1", "label": "\u03b5, \u03b5 \u2192 E", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "\u03b5, $ \u2192 \u03b5", "to": "q3"}, {"arrows": "to", "from": "q2", "label": "\u03b5, E \u2192 T", "to": "q4"}, {"arrows": "to", "from": "q4", "label": "\u03b5, \u03b5 \u2192 +", "to": "q5"}, {"arrows": "to", "from": "q5", "label": "\u03b5, \u03b5 \u2192 E", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "\u03b5, E \u2192 T", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "\u03b5, T \u2192 F", "to": "q6"}, {"arrows": "to", "from": "q6", "label": "\u03b5, \u03b5 \u2192 *", "to": "q7"}, {"arrows": "to", "from": "q7", "label": "\u03b5, \u03b5 \u2192 T", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "\u03b5, T \u2192 F", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "\u03b5, F \u2192 )", "to": "q8"}, {"arrows": "to", "from": "q8", "label": "\u03b5, \u03b5 \u2192 E", "to": "q9"}, {"arrows": "to", "from": "q9", "label": "\u03b5, \u03b5 \u2192 (", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "\u03b5, F \u2192 a", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "+, + \u2192 \u03b5", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "*, * \u2192 \u03b5", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "(, ( \u2192 \u03b5", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "), ) \u2192 \u03b5", "to": "q2"}, {"arrows": "to", "from": "q2", "label": "a, a \u2192 \u03b5", "to": "q2"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"physics": {"enabled": true}, "edges": {"smooth": {"enabled": true}, "color": {"inherit": false}}, "interaction": {"hover": true, "keyboard": {"enabled": true}, "multiselect": true, "navigationButtons": true}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

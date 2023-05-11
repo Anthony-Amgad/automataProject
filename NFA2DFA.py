@@ -15,11 +15,11 @@ class N2D(QtWidgets.QMainWindow):
 
     def reGraph(self):
         self.AdjLi = NFAGraphPlot.plotDir(self.Nodes,self.Edges)
-        self.graphBrowser.load(QtCore.QUrl.fromLocalFile(os.path.abspath("res/NFAgraph.html")))
+        self.graphBrowser.load(QtCore.QUrl.fromLocalFile(os.path.abspath("res/graphs/NFAgraph.html")))
 
     def DFAdraw(self, nodes, edges):
         DFAGraphPlot.plotDir(nodes, edges)
-        self.treeBrowser.load(QtCore.QUrl.fromLocalFile(os.path.abspath("res/DFAgraph.html")))
+        self.treeBrowser.load(QtCore.QUrl.fromLocalFile(os.path.abspath("res/graphs/DFAgraph.html")))
     
     def addNode(self, bool):
         self.count+=1
@@ -197,7 +197,7 @@ class N2D(QtWidgets.QMainWindow):
     
     def __init__(self):
         super(N2D,self).__init__()
-        uic.loadUi('res/GraphingWindow.ui',self)
+        uic.loadUi('res/ui/GraphingWindow.ui',self)
 
         self.Nodes = [{"name":0, "goal":False}]
         self.Edges = []
