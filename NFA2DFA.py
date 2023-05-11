@@ -211,12 +211,12 @@ class N2D(QtWidgets.QMainWindow):
         self.setFixedSize(1112, 858)
         
         self.graphBrowser = QtWebEngineWidgets.QWebEngineView(self.centralwidget)
-        self.graphBrowser.setGeometry(QtCore.QRect(0, 220, 551, 601))
+        self.graphBrowser.setGeometry(QtCore.QRect(0, 245, 551, 601))
         self.graphBrowser.setObjectName("graphBrowser")
         self.reGraph()
 
         self.treeBrowser = QtWebEngineWidgets.QWebEngineView(self.centralwidget)
-        self.treeBrowser.setGeometry(QtCore.QRect(560, 220, 551, 601))
+        self.treeBrowser.setGeometry(QtCore.QRect(560, 245, 551, 601))
         self.treeBrowser.setObjectName("treeBrowser")
         #self.reTree(False)
 

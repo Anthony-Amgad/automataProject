@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'f:\Ain Shams\Spring 2023\Automata\Project\automataProject\res\New folder\MainWindow.ui'
+# Form implementation generated from reading ui file 'f:\Ain Shams\Spring 2023\Automata\Project\automataProject\res\ui\MainWindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.3.0
 #
@@ -12,22 +12,19 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(804, 156)
+        MainWindow.resize(800, 230)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
+        MainWindow.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setAutoFillBackground(False)
+        self.centralwidget.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.centralwidget.setObjectName("centralwidget")
-        self.dirPushBut = QtWidgets.QPushButton(self.centralwidget)
-        self.dirPushBut.setGeometry(QtCore.QRect(140, 80, 141, 28))
-        self.dirPushBut.setObjectName("dirPushBut")
-        self.undirPushBut = QtWidgets.QPushButton(self.centralwidget)
-        self.undirPushBut.setGeometry(QtCore.QRect(510, 80, 141, 28))
-        self.undirPushBut.setObjectName("undirPushBut")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(210, 20, 451, 31))
+        self.label.setGeometry(QtCore.QRect(170, 20, 451, 31))
         font = QtGui.QFont()
         font.setFamily("MV Boli")
         font.setPointSize(10)
@@ -46,22 +43,36 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
+        self.nfaToDfaPushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.nfaToDfaPushButton.setGeometry(QtCore.QRect(120, 130, 171, 51))
+        self.nfaToDfaPushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.nfaToDfaPushButton.setAutoFillBackground(False)
+        self.nfaToDfaPushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Cambria\";\n"
+"background-color:rgb(7, 119, 197);\n"
+"border-radius:20px;\n"
+"")
+        self.nfaToDfaPushButton.setObjectName("nfaToDfaPushButton")
+        self.cfgToPdaPushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.cfgToPdaPushButton.setGeometry(QtCore.QRect(470, 130, 171, 51))
+        self.cfgToPdaPushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.cfgToPdaPushButton.setAutoFillBackground(False)
+        self.cfgToPdaPushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Cambria\";\n"
+"background-color:rgb(7, 119, 197);\n"
+"border-radius:20px;\n"
+"")
+        self.cfgToPdaPushButton.setObjectName("cfgToPdaPushButton")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        font = QtGui.QFont()
-        font.setPointSize(8)
-        self.statusbar.setFont(font)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "AI Search Project"))
-        self.dirPushBut.setText(_translate("MainWindow", "Directed Graph"))
-        self.undirPushBut.setText(_translate("MainWindow", "Undirected Graph"))
-        self.label.setText(_translate("MainWindow", "Choose the type of Graph you want to work on"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Automata Project"))
+        self.label.setText(_translate("MainWindow", "Choose the type of operation you want to perform"))
         self.label_2.setToolTip(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Anthony Amgad Fayek : 19P9880</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Youssef George Fouad : 19P9824</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Mostafa Nasrat Metwally : 19P4619</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Kerollos Wageeh Youssef : 19P3468</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "Hover Over Me!"))
+        self.nfaToDfaPushButton.setText(_translate("MainWindow", "NFA to DFA"))
+        self.cfgToPdaPushButton.setText(_translate("MainWindow", "CFG to PDA"))

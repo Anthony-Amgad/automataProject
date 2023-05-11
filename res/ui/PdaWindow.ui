@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>998</width>
-    <height>992</height>
+    <width>997</width>
+    <height>1016</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -50,7 +50,7 @@
 font: 75 16pt &quot;Georgia&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Insert start symbol:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Start symbol:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="inputStartSymbolTextEdit">
@@ -67,8 +67,14 @@ font: 75 16pt &quot;Georgia&quot;;</string>
 font: 10pt &quot;DejaVu Sans Mono&quot;;
 background-color: rgb(212, 232, 247);</string>
      </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
+     <property name="cursorWidth">
+      <number>1</number>
+     </property>
      <property name="placeholderText">
-      <string notr="true"/>
+      <string notr="true">ex: S</string>
      </property>
     </widget>
     <widget class="QPushButton" name="showPDAPushButton">
@@ -91,7 +97,7 @@ border-radius:30px;
 </string>
      </property>
      <property name="text">
-      <string>Show PDA</string>
+      <string>Convert</string>
      </property>
     </widget>
     <widget class="QWidget" name="pdaGroup" native="true">
@@ -136,7 +142,7 @@ font: 75 16pt &quot;Georgia&quot;;</string>
       <rect>
        <x>40</x>
        <y>110</y>
-       <width>341</width>
+       <width>411</width>
        <height>41</height>
       </rect>
      </property>
@@ -145,7 +151,7 @@ font: 75 16pt &quot;Georgia&quot;;</string>
 font: 75 16pt &quot;Georgia&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Insert alphabet (terminals):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Alphabet (terminals): &lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;&amp;quot;separated by commas&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="inputAlphabetTextEdit">
@@ -157,13 +163,19 @@ font: 75 16pt &quot;Georgia&quot;;</string>
        <height>50</height>
       </rect>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">border-color: rgb(4, 72, 117);
 font: 10pt &quot;DejaVu Sans Mono&quot;;
 background-color: rgb(212, 232, 247);</string>
      </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
      <property name="placeholderText">
-      <string notr="true"/>
+      <string notr="true">ex: a,*,+,(,)</string>
      </property>
     </widget>
     <widget class="Line" name="line">
@@ -193,7 +205,7 @@ background-color: rgb(212, 232, 247);</string>
 font: 75 16pt &quot;Georgia&quot;;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Insert production rules:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Production rules: &lt;/span&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;&amp;quot;each on a separate line&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="inputRulesTextEdit">
@@ -210,8 +222,11 @@ font: 75 16pt &quot;Georgia&quot;;</string>
 font: 10pt &quot;DejaVu Sans Mono&quot;;
 background-color: rgb(212, 232, 247);</string>
      </property>
+     <property name="tabChangesFocus">
+      <bool>true</bool>
+     </property>
      <property name="placeholderText">
-      <string notr="true"/>
+      <string>ex: E -&gt; E + T | T</string>
      </property>
     </widget>
    </widget>
@@ -221,7 +236,7 @@ background-color: rgb(212, 232, 247);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>998</width>
+     <width>997</width>
      <height>26</height>
     </rect>
    </property>

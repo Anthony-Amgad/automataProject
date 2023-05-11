@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(998, 992)
+        MainWindow.resize(997, 1016)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -37,7 +37,9 @@ class Ui_MainWindow(object):
         self.inputStartSymbolTextEdit.setStyleSheet("border-color: rgb(4, 72, 117);\n"
 "font: 10pt \"DejaVu Sans Mono\";\n"
 "background-color: rgb(212, 232, 247);")
-        self.inputStartSymbolTextEdit.setPlaceholderText("")
+        self.inputStartSymbolTextEdit.setTabChangesFocus(True)
+        self.inputStartSymbolTextEdit.setCursorWidth(1)
+        self.inputStartSymbolTextEdit.setPlaceholderText("ex: S")
         self.inputStartSymbolTextEdit.setObjectName("inputStartSymbolTextEdit")
         self.showPDAPushButton = QtWidgets.QPushButton(self.mainWidget)
         self.showPDAPushButton.setGeometry(QtCore.QRect(410, 230, 161, 61))
@@ -60,16 +62,18 @@ class Ui_MainWindow(object):
 "font: 75 16pt \"Georgia\";")
         self.pdaLabel.setObjectName("pdaLabel")
         self.insertAlphabetLabel = QtWidgets.QLabel(self.mainWidget)
-        self.insertAlphabetLabel.setGeometry(QtCore.QRect(40, 110, 341, 41))
+        self.insertAlphabetLabel.setGeometry(QtCore.QRect(40, 110, 411, 41))
         self.insertAlphabetLabel.setStyleSheet("color: rgb(6, 96, 159);\n"
 "font: 75 16pt \"Georgia\";")
         self.insertAlphabetLabel.setObjectName("insertAlphabetLabel")
         self.inputAlphabetTextEdit = QtWidgets.QTextEdit(self.mainWidget)
         self.inputAlphabetTextEdit.setGeometry(QtCore.QRect(40, 150, 430, 50))
+        self.inputAlphabetTextEdit.setAutoFillBackground(False)
         self.inputAlphabetTextEdit.setStyleSheet("border-color: rgb(4, 72, 117);\n"
 "font: 10pt \"DejaVu Sans Mono\";\n"
 "background-color: rgb(212, 232, 247);")
-        self.inputAlphabetTextEdit.setPlaceholderText("")
+        self.inputAlphabetTextEdit.setTabChangesFocus(True)
+        self.inputAlphabetTextEdit.setPlaceholderText("ex: a,*,+,(,)")
         self.inputAlphabetTextEdit.setObjectName("inputAlphabetTextEdit")
         self.line = QtWidgets.QFrame(self.mainWidget)
         self.line.setGeometry(QtCore.QRect(10, 300, 971, 20))
@@ -86,11 +90,11 @@ class Ui_MainWindow(object):
         self.inputRulesTextEdit.setStyleSheet("border-color: rgb(4, 72, 117);\n"
 "font: 10pt \"DejaVu Sans Mono\";\n"
 "background-color: rgb(212, 232, 247);")
-        self.inputRulesTextEdit.setPlaceholderText("")
+        self.inputRulesTextEdit.setTabChangesFocus(True)
         self.inputRulesTextEdit.setObjectName("inputRulesTextEdit")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 998, 26))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 997, 26))
         self.menuBar.setObjectName("menuBar")
         self.menuShow = QtWidgets.QMenu(self.menuBar)
         self.menuShow.setObjectName("menuShow")
@@ -126,11 +130,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "PDA"))
-        self.insertStartSymbolLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Insert start symbol:</span></p></body></html>"))
-        self.showPDAPushButton.setText(_translate("MainWindow", "Show PDA"))
+        self.insertStartSymbolLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Start symbol:</span></p></body></html>"))
+        self.showPDAPushButton.setText(_translate("MainWindow", "Convert"))
         self.pdaLabel.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">PDA:</p></body></html>"))
-        self.insertAlphabetLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Insert alphabet (terminals):</span></p></body></html>"))
-        self.insertRulesLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Insert production rules:</span></p></body></html>"))
+        self.insertAlphabetLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Alphabet (terminals): </span><span style=\" font-size:9pt;\">&quot;separated by commas&quot;</span></p></body></html>"))
+        self.insertRulesLabel.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Production rules: </span><span style=\" font-size:9pt;\">&quot;each on a separate line&quot;</span></p></body></html>"))
+        self.inputRulesTextEdit.setPlaceholderText(_translate("MainWindow", "ex: E -> E + T | T"))
         self.menuShow.setTitle(_translate("MainWindow", "Show"))
         self.menuDeveloped_by.setTitle(_translate("MainWindow", "Developed by"))
         self.actionYoussef_Geroge_19P9880.setText(_translate("MainWindow", "Youssef George    19P9824"))

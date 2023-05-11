@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1112</width>
-    <height>858</height>
+    <height>900</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,13 +18,24 @@
   </property>
   <property name="font">
    <font>
+    <family>DejaVu Sans Mono</family>
     <pointsize>10</pointsize>
+    <weight>50</weight>
+    <italic>false</italic>
+    <bold>false</bold>
    </font>
   </property>
   <property name="windowTitle">
-   <string/>
+   <string>NFA to DFA</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 10pt &quot;DejaVu Sans Mono&quot;;
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
@@ -42,10 +53,15 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>20</y>
+      <y>10</y>
       <width>521</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(4, 72, 117);
+font: 10pt &quot;DejaVu Sans Mono&quot;;
+background-color: rgb(212, 232, 247);</string>
     </property>
     <property name="inputMask">
      <string/>
@@ -61,42 +77,55 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>50</y>
-      <width>251</width>
-      <height>22</height>
+      <y>51</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(212, 232, 247);</string>
     </property>
     <property name="editable">
      <bool>true</bool>
     </property>
-    <property name="placeholderText">
+    <property name="placeholderText" stdset="0">
      <string>From Node</string>
     </property>
    </widget>
    <widget class="QComboBox" name="toEdAddCom">
     <property name="geometry">
      <rect>
-      <x>850</x>
+      <x>760</x>
       <y>50</y>
-      <width>251</width>
-      <height>22</height>
+      <width>181</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(212, 232, 247);</string>
     </property>
     <property name="editable">
      <bool>true</bool>
     </property>
-    <property name="placeholderText">
+    <property name="placeholderText" stdset="0">
      <string>To Node</string>
     </property>
    </widget>
    <widget class="QPushButton" name="adEdgeBtn">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>80</y>
-      <width>131</width>
-      <height>28</height>
+      <x>950</x>
+      <y>50</y>
+      <width>141</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font: 75 12pt &quot;Cambria&quot;;
+background-color:rgb(7, 119, 197);
+border-radius:20px;
+</string>
     </property>
     <property name="text">
      <string>Add Transition</string>
@@ -121,13 +150,16 @@
       <x>20</x>
       <y>130</y>
       <width>371</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(212, 232, 247);</string>
     </property>
     <property name="editable">
      <bool>true</bool>
     </property>
-    <property name="placeholderText">
+    <property name="placeholderText" stdset="0">
      <string>Pick a Node to Delete</string>
     </property>
    </widget>
@@ -140,6 +172,13 @@
       <height>28</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font: 75 12pt &quot;Cambria&quot;;
+background-color:rgb(7, 119, 197);
+border-radius:20px;
+</string>
+    </property>
     <property name="text">
      <string>Delete Node</string>
     </property>
@@ -150,13 +189,16 @@
       <x>580</x>
       <y>130</y>
       <width>371</width>
-      <height>22</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(212, 232, 247);</string>
     </property>
     <property name="editable">
      <bool>true</bool>
     </property>
-    <property name="placeholderText">
+    <property name="placeholderText" stdset="0">
      <string>Pick an Edge to Delete</string>
     </property>
    </widget>
@@ -166,8 +208,15 @@
       <x>960</x>
       <y>130</y>
       <width>141</width>
-      <height>28</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font: 75 12pt &quot;Cambria&quot;;
+background-color:rgb(7, 119, 197);
+border-radius:20px;
+</string>
     </property>
     <property name="text">
      <string>Delete Edge</string>
@@ -177,7 +226,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>160</y>
+      <y>170</y>
       <width>1111</width>
       <height>20</height>
      </rect>
@@ -190,10 +239,17 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>180</y>
-      <width>131</width>
-      <height>28</height>
+      <y>190</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font: 75 16pt &quot;Cambria&quot;;
+background-color:rgb(7, 119, 197);
+border-radius:20px;
+</string>
     </property>
     <property name="text">
      <string>Convert</string>
@@ -203,10 +259,17 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>50</y>
+      <y>60</y>
       <width>201</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font: 75 12pt &quot;Cambria&quot;;
+background-color:rgb(7, 119, 197);
+border-radius:20px;
+</string>
     </property>
     <property name="text">
      <string>Add Accepted State</string>
@@ -216,10 +279,17 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>50</y>
+      <y>60</y>
       <width>201</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+font: 75 12pt &quot;Cambria&quot;;
+background-color:rgb(7, 119, 197);
+border-radius:20px;
+</string>
     </property>
     <property name="text">
      <string>Add Transitional State</string>
@@ -228,9 +298,9 @@
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>70</x>
       <y>10</y>
-      <width>351</width>
+      <width>461</width>
       <height>20</height>
      </rect>
     </property>
