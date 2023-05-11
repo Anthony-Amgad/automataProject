@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Automata Project"))
         self.label.setText(_translate("MainWindow", "Choose the type of operation you want to perform"))
-        self.label_2.setToolTip(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Anthony Amgad Fayek : 19P9880</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Youssef George Fouad : 19P9824</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Mostafa Nasrat Metwally : 19P4619</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Kerollos Wageeh Youssef : 19P3468</span></p></body></html>"))
+        self.label_2.setToolTip(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Anthony Amgad Fayek : 19P9880</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Youssef George Fouad : 19P9824</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Mostafa Nasrat Metwally : 19P4619</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Kerollos Wageeh Youssef : 19P3468</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Marc Nagy Nasry : 19P3041</span></p><p><span style=\" font-size:11pt; font-weight:600;\">Youssef Ashraf Mounir : 19P4179</span></p></body></html>"))
         self.label_2.setText(_translate("MainWindow", "Hover Over Me!"))
         self.nfaToDfaPushButton.setText(_translate("MainWindow", "NFA to DFA"))
         self.cfgToPdaPushButton.setText(_translate("MainWindow", "CFG to PDA"))
